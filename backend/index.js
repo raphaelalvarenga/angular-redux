@@ -1,28 +1,96 @@
 const express = require("express");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const sequelize = require("./connection");
+const Pessoa = require("./models/Pessoa");
+
+let retorno = {};
+let status = null;
 
 const app = express();
 
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.json({type: "get"});
+    Pessoa
+        .findAll()
+        .then(result => {
+            retorno = result;
+            status = 200;
+        })
+        .catch(error => {
+            retorno = result;
+            status = 500;
+        })
+        .finally(() => res.status(status).json(retorno));
 });
 
 app.get("/:id", (req, res) => {
-    res.json({type: `get by id ${req.params.id}`});
+    const id = req.params.id;
+    Pessoa
+        .findByPk(id)
+        .then(result => {
+            retorno = result;
+            status = 200;
+        })
+        .catch(error => {
+            retorno = result;
+            status = 500;
+        })
+        .finally(() => res.status(status).json(retorno));
 });
 
 app.post("/", (req, res) => {
-    res.json({type: "post"});
+    const pessoa = req.body;
+
+    Pessoa
+        .create(pessoa)
+        .then(result => {
+            retorno = result;
+            status = 200;
+        })
+        .catch(error => {
+            retorno = result;
+            status = 500;
+        })
+        .finally(() => res.status(status).json(retorno));
 });
 
 app.put("/:id", (req, res) => {
-    res.json({type: `put id ${req.params.id}`});
+    const pessoa = {...req.body, id: req.params.id};
+
+    Pessoa
+        .update(pessoa, {
+            where: {
+                id: pessoa.id
+            }
+        })
+        .then(result => {
+            retorno = result;
+            status = 200;
+        })
+        .catch(error => {
+            retorno = result;
+            status = 500;
+        })
+        .finally(() => res.status(status).json(retorno));
 });
 
 app.delete("/:id", (req, res) => {
-    res.json({type: `delete id ${req.params.id}`});
+    const id = req.params.id;
+
+    Pessoa
+        .destroy({
+            where: {id}
+        })
+        .then(result => {
+            retorno = result;
+            status = 200;
+        })
+        .catch(error => {
+            retorno = result;
+            status = 500;
+        })
+        .finally(() => res.status(status).json(retorno));
 });
 
 app.listen(3000, () => console.log("Funcionando"));
