@@ -47,6 +47,8 @@ app.get("/:id", (req, res) => {
 app.post("/", (req, res) => {
     const pessoa = req.body;
 
+    console.table(pessoa);
+
     Pessoa
         .create(pessoa)
         .then(result => {

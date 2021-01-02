@@ -21,6 +21,9 @@ export class PessoaService {
 
   postPessoa(pessoa: Pessoa) {
 
+    const { nome, idade, nacionalidade } = pessoa;
+    
+    return this.http.post<Pessoa>(this.url, {nome, idade, nacionalidade})
   }
 
   putPessoa(pessoa: Pessoa) {

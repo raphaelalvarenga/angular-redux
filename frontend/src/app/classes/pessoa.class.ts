@@ -6,7 +6,7 @@ export class Pessoa {
     private _createdAt: string;
     private _updatedAt: string;
 
-    constructor(nome: string, idade: number, nacionalidade: string, createdAt: string, updatedAt: string, id?: number) {
+    constructor(nome: string, idade: number, nacionalidade: string, createdAt?: string, updatedAt?: string, id?: number) {
         this._id = id || null;
         this._nome = nome;
         this._idade = idade;
