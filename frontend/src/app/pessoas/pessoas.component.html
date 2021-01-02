@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Nacionalidade</th>
+                <th>Data de Criação</th>
+                <th>Data de Atualização</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let pessoa of pessoas">
+                <td>{{ pessoa.id }}</td>
+                <td>{{ pessoa.nome }}</td>
+                <td>{{ pessoa.idade }}</td>
+                <td>{{ pessoa.nacionalidade }}</td>
+                <td>{{ pessoa.createdAt.toLocaleDateString() }}</td>
+                <td>{{ pessoa.updatedAt.toLocaleDateString() }}</td>
+                <td>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div><button class = "btn btn-warning">Editar</button></div>
+                        <div><button class = "btn btn-danger">Excluir</button></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
