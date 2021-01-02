@@ -17,12 +17,12 @@
                 <td>{{ pessoa.nome }}</td>
                 <td>{{ pessoa.idade }}</td>
                 <td>{{ pessoa.nacionalidade }}</td>
-                <td>{{ pessoa.createdAt.toLocaleDateString() }}</td>
-                <td>{{ pessoa.updatedAt.toLocaleDateString() }}</td>
+                <td>{{ pessoa.createdAt | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ pessoa.updatedAt | date: 'dd/MM/yyyy' }}</td>
                 <td>
                     <div style="display: flex; justify-content: space-evenly;">
                         <div><button class = "btn btn-warning">Editar</button></div>
-                        <div><button class = "btn btn-danger">Excluir</button></div>
+                        <div><button class = "btn btn-danger" (click) = "deletePessoas(pessoa)">Excluir</button></div>
                     </div>
                 </td>
             </tr>

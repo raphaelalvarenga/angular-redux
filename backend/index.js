@@ -1,7 +1,11 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+const cors = require("cors");
 const sequelize = require("./connection");
 const Pessoa = require("./models/Pessoa");
+const loadPessoas = require("./util/generate-data");
+
+loadPessoas()
 
 let retorno = {};
 let status = null;
@@ -9,6 +13,7 @@ let status = null;
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
     Pessoa

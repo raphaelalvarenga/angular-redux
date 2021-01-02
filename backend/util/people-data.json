@@ -1,0 +1,13 @@
+{
+    "people": [
+        {"name": "Marilyn Monroe", "age": "17", "nationality": "American"},
+        {"name": "Abraham Lincoln", "age": "50", "nationality": "American"},
+        {"name": "Nelson Mandela", "age": "45", "nationality": "South African"},
+        {"name": "John F. Kennedy", "age": "30", "nationality": "American"},
+        {"name": "Martin Luther King",  "age": "42", "nationality": "American"},
+        {"name": "Queen Elizabeth II", "age": "18", "nationality": "British"},
+        {"name": "Winston Churchill", "age": "65", "nationality": "British"},
+        {"name": "Donald Trump", "age": "11", "nationality": "American"},
+        {"name": "Bill Gates", "age": "25", "nationality": "American"}
+    ]
+}

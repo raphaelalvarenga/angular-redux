@@ -3,10 +3,10 @@ export class Pessoa {
     private _nome: string;
     private _idade: number;
     private _nacionalidade: string;
-    private _createdAt: Date;
-    private _updatedAt: Date;
+    private _createdAt: string;
+    private _updatedAt: string;
 
-    constructor(nome: string, idade: number, nacionalidade: string, createdAt: Date, updatedAt: Date, id?: number) {
+    constructor(nome: string, idade: number, nacionalidade: string, createdAt: string, updatedAt: string, id?: number) {
         this._id = id || null;
         this._nome = nome;
         this._idade = idade;
@@ -51,7 +51,7 @@ export class Pessoa {
         return this._createdAt;
     }
 
-    set createdAt(createdAt: Date) {
+    set createdAt(createdAt: string) {
         this._createdAt = createdAt;
     }
 
@@ -59,7 +59,7 @@ export class Pessoa {
         return this._updatedAt;
     }
 
-    set updatedAt(updatedAt: Date) {
+    set updatedAt(updatedAt: string) {
         this._updatedAt = updatedAt;
     }
 }
