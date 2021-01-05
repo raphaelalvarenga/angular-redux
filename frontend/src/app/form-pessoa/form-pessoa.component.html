@@ -14,7 +14,7 @@
 
         <div style="display: flex;">
             <div style = "margin-right: 10px;">
-                <button class="btn btn-success" [disabled] = "personForm.status === 'INVALID'">Enviar</button>
+                <button class="btn btn-success" [disabled] = "personForm.status === 'INVALID'">{{ urlArr.length === 3 ? 'Atualizar' : 'Enviar' }}</button>
             </div>
             <div>
                 <button type="button" class="btn btn-danger" (click) = "clearForm()">Limpar</button>

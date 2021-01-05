@@ -21,7 +21,8 @@
                 <td>{{ pessoa.updatedAt | date: 'dd/MM/yyyy' }}</td>
                 <td>
                     <div style="display: flex; justify-content: space-evenly;">
-                        <div><button class = "btn btn-warning">Editar</button></div>
+                        <div><button class = "btn btn-warning" (click) = "editarPessoa(pessoa)">Editar</button></div>
+                        <!-- <div><a class = "btn btn-warning" routerLink = "/form-pessoas">Editar</a></div> -->
                         <div><button class = "btn btn-danger" (click) = "deletePessoas(pessoa)">Excluir</button></div>
                     </div>
                 </td>

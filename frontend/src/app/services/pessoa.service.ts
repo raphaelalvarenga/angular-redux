@@ -15,8 +15,8 @@ export class PessoaService {
     return this.http.get<Array<Pessoa>>(this.url);
   }
 
-  getPessoasById(pessoa: Pessoa) {
-
+  getPessoasById(id: number) {
+    return this.http.get<Pessoa>(`${this.url}/${id}`);
   }
 
   postPessoa(pessoa: Pessoa) {
@@ -27,7 +27,12 @@ export class PessoaService {
   }
 
   putPessoa(pessoa: Pessoa) {
+    console.log(pessoa);
+    const { nome, idade, nacionalidade } = pessoa;
 
+    return this.http.put<Array<number>>(`${this.url}/${pessoa.id}`, {
+      nome, idade, nacionalidade
+    });
   }
 
   deletePessoa(pessoa: Pessoa) {

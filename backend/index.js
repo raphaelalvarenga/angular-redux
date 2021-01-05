@@ -5,7 +5,7 @@ const sequelize = require("./connection");
 const Pessoa = require("./models/Pessoa");
 const loadPessoas = require("./util/generate-data");
 
-loadPessoas()
+// loadPessoas()
 
 let retorno = {};
 let status = null;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pessoa } from '../classes/pessoa.class';
 import { PessoaService } from '../services/pessoa.service';
 
@@ -11,7 +12,7 @@ export class PessoasComponent implements OnInit {
 
   pessoas: Array<Pessoa> = [];
 
-  constructor(private pessoaService: PessoaService) { }
+  constructor(private pessoaService: PessoaService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPessoas();
@@ -27,6 +28,10 @@ export class PessoasComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  editarPessoa(pessoa: Pessoa) {
+    this.router.navigateByUrl(`/form-pessoas/${pessoa.id}`);
   }
 
   deletePessoas(pessoa: Pessoa) {

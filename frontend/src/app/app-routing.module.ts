@@ -5,6 +5,7 @@ import { FormPessoaComponent} from './form-pessoa/form-pessoa.component';
 
 const routes: Routes = [
   { path: '', component: PessoasComponent },
+  { path: 'form-pessoas/:id', component: FormPessoaComponent },
   { path: 'form-pessoas', component: FormPessoaComponent }
 ];
 
