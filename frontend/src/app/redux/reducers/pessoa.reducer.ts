@@ -1,5 +1,6 @@
-import { Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { Pessoa } from 'src/app/classes/pessoa.class';
+import { getPessoas } from '../actions/pessoa.action';
 
 const initialState: Pessoa[] = [
     new Pessoa("Marilyn Monroe", 17, "American", "2021-01-05T23:40:40.000Z", "2021-01-05T23:40:40.000Z", 1),
@@ -13,13 +14,9 @@ const initialState: Pessoa[] = [
     new Pessoa("Bill Gates", 25, "American", "2021-01-05T23:40:40.000Z", "2021-01-05T23:40:40.000Z", 9)
 ];
 
-export const pessoaReducer = (state = initialState, action: Action) => {
-    switch (action.type) {
-        case 'getPessoas':
-            break;
+const _pessoaReducer = createReducer(
+    initialState,
+    on(getPessoas, (state) => state)
+);
 
-        default: break;
-    }
-
-    return state;
-}
+export const pessoaReducer = (state: Pessoa[], action: Action) => _pessoaReducer(state, action);

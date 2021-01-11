@@ -1,5 +1,3 @@
-import { Action } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 
-export class PessoaAction implements Action {
-    readonly type = 'getPessoas';
-}
+export const getPessoas = createAction('getPessoas');
