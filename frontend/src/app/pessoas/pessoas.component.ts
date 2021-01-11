@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pessoa } from '../classes/pessoa.class';
-import { PessoaService } from '../services/pessoa.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+interface AppState {
+  pessoaReducer: Pessoa[]
+}
 
 @Component({
   selector: 'app-pessoas',
@@ -10,40 +15,20 @@ import { PessoaService } from '../services/pessoa.service';
 })
 export class PessoasComponent implements OnInit {
 
-  pessoas: Array<Pessoa> = [];
+  pessoas$: Observable<Pessoa[]>
 
-  constructor(private pessoaService: PessoaService, private router: Router) { }
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.getPessoas();
+    this.pessoas$ = this.store.select('pessoaReducer');
   }
 
-  getPessoas() {
-    this.pessoaService.getPessoas().subscribe(
-      result => {
-        this.pessoas = result;
-      },
-
-      error => {
-        console.log(error);
-      }
-    )
-  }
+  getPessoas() { }
 
   editarPessoa(pessoa: Pessoa) {
     this.router.navigateByUrl(`/form-pessoas/${pessoa.id}`);
   }
 
-  deletePessoas(pessoa: Pessoa) {
-    this.pessoaService.deletePessoa(pessoa).subscribe(
-      result => {
-        this.pessoas = this.pessoas.filter(pessoaItem => pessoaItem !== pessoa);
-      },
-
-      error => {
-        console.log(error);
-      }
-    )
-  }
+  deletePessoas(pessoa: Pessoa) { }
 
 }

@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PessoasComponent } from './pessoas/pessoas.component';
 import { FormPessoaComponent } from './form-pessoa/form-pessoa.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { pessoaReducer } from './redux/reducers/pessoa.reducer';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ pessoaReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
