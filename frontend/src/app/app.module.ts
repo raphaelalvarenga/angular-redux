@@ -10,6 +10,8 @@ import { FormPessoaComponent } from './form-pessoa/form-pessoa.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { pessoaReducer } from './redux/reducers/pessoa.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PessoaEffect } from './redux/effects/pessoa.effect';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { pessoaReducer } from './redux/reducers/pessoa.reducer';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ pessoaReducer })
+    StoreModule.forRoot({ pessoaReducer }),
+    EffectsModule.forRoot([PessoaEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]
